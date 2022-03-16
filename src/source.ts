@@ -171,7 +171,7 @@ export class DataSource {
      * @param instances Instances
      */
     public async pushInstances(instances: InstanceType[][]): Promise<void> {
-        let sentence = "INSERT INTO `" + Config.getInstance().mysqlTable + "`(";
+        let sentence = "INSERT INTO " + Config.getInstance().mysqlTableLike + "(";
 
         sentence += this.fields.map(f => "`" + f.name + "`").join(",");
 
@@ -206,7 +206,7 @@ export class DataSource {
      * @returns Instances count
      */
     public async countInstances(filter: QueryTree): Promise<number> {
-        let sentence = "SELECT COUNT(*) AS `count` FROM `" + Config.getInstance().mysqlTable + "`";
+        let sentence = "SELECT COUNT(*) AS `count` FROM " + Config.getInstance().mysqlTableLike + "";
         const values = [];
 
 
@@ -266,7 +266,7 @@ export class DataSource {
             sentence += "*";
         }
 
-        sentence += " FROM `" + Config.getInstance().mysqlTable + "`";
+        sentence += " FROM " + Config.getInstance().mysqlTableLike + "";
 
         const cond1 = toSQLCondition(this.fields, filter);
 
@@ -336,7 +336,7 @@ export class DataSource {
         const fieldName = this.fields[feature].name;
         query = (query || "").toLowerCase();
 
-        sentence += '`' + fieldName + '` FROM `' + Config.getInstance().mysqlTable + '`';
+        sentence += '`' + fieldName + '` FROM ' + Config.getInstance().mysqlTableLike + '';
 
         if (cond1.sql) {
             if (query) {

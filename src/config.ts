@@ -41,7 +41,7 @@ export class Config {
     public mysqlUser: string;
     public mysqlPassword: string;
     public mysqlDatabase: string;
-    public mysqlTable: string;
+    public mysqlTableLike: string;
     public mysqlConnections: number;
 
     public deepintURL: string;
@@ -73,7 +73,11 @@ export class Config {
         this.mysqlUser = process.env.MYSQL_USER || "root";
         this.mysqlPassword = process.env.MYSQL_PASSWORD || "";
         this.mysqlDatabase = process.env.MYSQL_DB_NAME || "test";
-        this.mysqlTable = process.env.MYSQL_TABLE || "iris";
+        const mysqlTable = process.env.MYSQL_TABLE || "iris";
+        const mysqlQuery = process.env.MYSQL_QUERY || "";
+
+        this.mysqlTableLike = mysqlQuery ? ("( " +  mysqlQuery + " ) as query_tmp_table") : ("`" + mysqlTable + "`");
+
         this.mysqlConnections = parseInt(process.env.MYSQL_MAX_CONNECTIONS, 10) || 4;
 
         this.deepintURL = process.env.DEEPINT_API_URL || "https://app.deepint.net/api/v1/";

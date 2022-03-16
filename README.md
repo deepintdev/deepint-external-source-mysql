@@ -52,6 +52,7 @@ In order to configure the source, set the following variables:
 | MYSQL_PASSWORD | MySQL password. |
 | MYSQL_DB_NAME | MySQL database name. |
 | MYSQL_TABLE | MySQL table name. |
+| MYSQL_QUERY | MySQL query to use instead of the table. Example: `SELECT * FROM iris WHERE species = 'setosa'` |
 | MYSQL_MAX_CONNECTIONS | Max connections in the MySQL connection pool. |
 | SOURCE_FIELDS | List of fields, split by commas. Example: `sepallength,sepalwidth,petallength,petalwidth,species` |
-| SOURCE_FIELDS_TYPES | For each field, its type. Types are: `nominal`, `numeric`, `logic`, `date` and `text`. |
+| SOURCE_FIELDS_TYPES | For each field, its type. Types are: `nominal`, `numeric`, `logic`, `date` and `text`. Example: `numeric,numeric,numeric,numeric,nominal` |
