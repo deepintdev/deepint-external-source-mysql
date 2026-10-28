@@ -1,7 +1,7 @@
 {
   "name": "deepint-external-source-mysql",
-  "version": "1.0.0",
-  "description": "MySQL external source for Deep Intelligence",
+  "version": "1.1.0",
+  "description": "MySQL external source for AIR-Core",
   "main": "dist/index.js",
   "scripts": {
     "watch": "npm run watch:ts",
